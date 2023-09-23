@@ -1,6 +1,12 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../context/ProductContextProvider";
 import { Link } from "react-router-dom";
+
+// context
+import { ProductContext } from "../context/ProductContextProvider";
+
+
+
+
 const ProductData = (props) => {
   const id = props.match.params.id;
   const data = useContext(ProductContext);
