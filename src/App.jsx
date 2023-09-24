@@ -10,7 +10,7 @@ import Store from "./Components/Store";
 import ProductData from "./Components/ProductData";
 import CounterContextProvider from "./context/CounterContextProvider";
 import Navbar from "./Components/shared/Navbar";
-import Cart from "./Components/Cart";
+import Cart from "./Components/ShopCart";
 
 const App = () => {
   return (
