@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useContext } from "react";
 
-const Cart = () => {
-    return (
-        <div>
-          Cart Page  
-        </div>
-    );
+// component
+import Cart from "./shared/Cart";
+
+// context
+import { CartContext } from "../context/CounterContextProvider";
+
+const ShopCart = () => {
+  const { state } = useContext(CartContext);
+  return (
+    <div>
+      <div>
+    {state.selectedItems.map(item=> <Cart key={item.id} data={item}/>)}
+      </div>
+    </div>
+  );
 };
 
-export default Cart;
+export default ShopCart;

@@ -21,7 +21,7 @@ const App = () => {
           <Switch>
             <Route path='/products/:id' component={ProductData} />
             <Route path='/products' component={Store} />
-            <Route path='/Cart' component={Cart} />
+            <Route path='/shopcart' component={Cart} />
             <Redirect to='/products' />
           </Switch>
         </CounterContextProvider>

@@ -23,7 +23,6 @@ const cartReducer = (state, action) => {
     case "ADD_ITEM":
       if (!state.selectedItems.find((item) => item.id === action.payload.id)) {
         state.selectedItems.push({ ...action.payload, quantity: 1 });
-        console.log("add-item");
       }
       return {
         ...state,
@@ -38,14 +37,15 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         selectedItems: [...newSelectedItems],
-        ...sumItems(state.selectedItems)
+        ...sumItems(newSelectedItems)
       };
+
+ 
     case "INCREASE":
       const indexI = state.selectedItems.findIndex(
         (item) => item.id === action.payload.id
       );
       state.selectedItems[indexI].quantity++;
-      console.log("log");
 
       return {
         ...state,
