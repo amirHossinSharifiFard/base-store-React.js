@@ -11,7 +11,6 @@ const ProductData = (props) => {
   const id = props.match.params.id;
   const data = useContext(ProductContext);
   const product = data[id - 1];
-  console.log(product);
   const { image, title, description, price, category } = product;
   return (
     <div>

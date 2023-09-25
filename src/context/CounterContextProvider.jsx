@@ -81,7 +81,7 @@ const cartReducer = (state, action) => {
 export const CartContext = createContext();
 const CounterContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
-  console.log(state);
+
 
   return (
     <CartContext.Provider value={{ state, dispatch }}>
