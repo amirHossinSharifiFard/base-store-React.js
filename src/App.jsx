@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 // Context
 import ProductContextProvider from "./context/ProductContextProvider";
@@ -18,12 +18,12 @@ const App = () => {
       <ProductContextProvider>
         <CounterContextProvider>
           <Navbar />
-          <Switch>
-            <Route path='/products/:id' component={ProductData} />
-            <Route path='/products' component={Store} />
-            <Route path='/shopcart' component={Cart} />
-            <Redirect to='/products' />
-          </Switch>
+          <Routes>
+            <Route path='/products/:id' element={<ProductData />} />
+            <Route path='/products' element={<Store />} />
+            <Route path='/shopcart' element={<Cart />} />
+            <Route path='/*' element={<Navigate to='/products' />} />
+          </Routes>
         </CounterContextProvider>
       </ProductContextProvider>
     </div>
