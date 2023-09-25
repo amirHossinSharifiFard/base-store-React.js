@@ -27,7 +27,8 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         selectedItems: [...state.selectedItems],
-        ...sumItems(state.selectedItems)
+        ...sumItems(state.selectedItems),
+        checkOut: false
       };
 
     case "REMOVE_ITEM":
@@ -40,7 +41,6 @@ const cartReducer = (state, action) => {
         ...sumItems(newSelectedItems)
       };
 
- 
     case "INCREASE":
       const indexI = state.selectedItems.findIndex(
         (item) => item.id === action.payload.id
@@ -64,14 +64,14 @@ const cartReducer = (state, action) => {
     case "CHECKOUT":
       return {
         selectedItems: [],
-        counter: 0,
+        itemsCounter: 0,
         total: 0,
         checkOut: true
       };
     case "CLEAR":
       return {
         selectedItems: [],
-        counter: 0,
+        itemsCounter: 0,
         total: 0,
         checkOut: false
       };
