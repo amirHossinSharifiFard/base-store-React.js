@@ -1,19 +1,29 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-// context
-import { ProductContext } from "../context/ProductContextProvider";
-
+// redux
+import { fetchProducts } from "../redux/products/productsAction";
 // components
 import Product from "./shared/Product";
 
 const Store = () => {
-  const products = useContext(ProductContext);
+  const dispatch = useDispatch();
+  const productsState = useSelector((state) => state.productsState);
+
+  useEffect(() => {
+    if (productsState.products.length < 1) dispatch(fetchProducts());
+  }, []);
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
-      {products.map((product) => (
-        <Product key={product.id} productData={product} />
-      ))}
+      {productsState.loading ? (
+        <p>loading .... </p>
+      ) : productsState.error ? (
+        <p>somthing is wrong</p>
+      ) : (
+        productsState.products.map((product) => (
+          <Product key={product.id} productData={product} />
+        ))
+      )}
     </div>
   );
 };
