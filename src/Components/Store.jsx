@@ -8,11 +8,11 @@ const Store = () => {
   const products = useContext(ProductContext);
 
   return (
-    <>
+    <div style={{ display: "flex", justifyContent: "space-between" ,flexWrap:"wrap"}}>
       {products.map((item) => (
         <Product key={item.id} productData={item} />
       ))}
-    </>
+    </div>
   );
 };
 
