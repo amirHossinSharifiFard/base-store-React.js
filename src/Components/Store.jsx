@@ -9,8 +9,8 @@ const Store = () => {
 
   return (
     <div style={{ display: "flex", justifyContent: "space-between" ,flexWrap:"wrap"}}>
-      {products.map((item) => (
-        <Product key={item.id} productData={item} />
+      {products.map((product) => (
+        <Product key={product.id} productData={product} />
       ))}
     </div>
   );

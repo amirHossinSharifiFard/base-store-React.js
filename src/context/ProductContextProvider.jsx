@@ -6,9 +6,13 @@ import { getProducts } from "../services/api";
 export const ProductContext = createContext();
 
 const ProductContextProvider = (props) => {
+  
   const [products, setProducts] = useState([]);
 
+  
   useEffect(() => {
+
+    // get and set API
     const fetchAPI = async () => {
       setProducts(await getProducts());
     };
