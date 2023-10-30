@@ -1,4 +1,3 @@
-
 // short title Name
 const shorten = (title) => {
   const splitedTitle = title.split(" ");
@@ -6,4 +5,17 @@ const shorten = (title) => {
   return newTitle;
 };
 
-export {shorten}
+//  is in cart
+const isInCart = (state, id) => {
+  const resault = !!state.selectedItems.find((item) => item.id === id);
+  return resault;
+};
+const quantityCount = (state, id) => {
+  const index = state.selectedItems.findIndex((item) => item.id === id);
+  if (index === -1) {
+    return false;
+  } else {
+    return state.selectedItems[index].quantity;
+  }
+};
+export { shorten, isInCart, quantityCount };
