@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
+// css
+import styles from "./Product.module.css";
 // ICON
 import trashIcon from "../../assets/icons/trash.svg";
 // functions
@@ -15,15 +17,21 @@ const Product = ({ productData }) => {
   const { title, price, image, id } = productData;
 
   return (
-    <div>
-      <img src={image} alt='product' style={{ width: "200px" }} />
+    <div className={styles.container}>
+      <img
+        className={styles.cardImage}
+        src={image}
+        alt='product'
+        style={{ width: "200px" }}
+      />
       <h3>{shorten(title)} </h3>
       <p>price:{price}</p>
-      <div>
+      <div className={styles.linkContainer}>
         <Link to={`/products/${id}`}>details</Link>
-        <div>
+        <div className={styles.buttonContainer}>
           {quantityCount(state, id) === 1 && (
             <button
+              className={styles.smallButton}
               onClick={() =>
                 dispatch({ type: "REMOVE_ITEM", payload: productData })
               }>
@@ -32,15 +40,19 @@ const Product = ({ productData }) => {
           )}
           {quantityCount(state, id) > 1 && (
             <button
+              className={styles.smallButton}
               onClick={() =>
                 dispatch({ type: "DECREASE", payload: productData })
               }>
               -
             </button>
           )}
-
+          {quantityCount(state, id) > 0 && (
+            <span className={styles.counter}>{quantityCount(state, id)}</span>
+          )}
           {isInCart(state, id) ? (
             <button
+              className={styles.smallButton}
               onClick={() =>
                 dispatch({ type: "INCREASE", payload: productData })
               }>
@@ -53,7 +65,6 @@ const Product = ({ productData }) => {
               }>
               add to cart
             </button>
-            
           )}
         </div>
       </div>
